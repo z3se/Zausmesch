@@ -86,7 +86,7 @@ init -10 python in awc_utils:
 
 init -200 python in awc_globals:
     #Store base url in a global store
-    BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
+    BASE_URL = "http://api.openweathermap.org/data/3.0/weather?"
 
     #Stores the time at which it should check whether weather should change
     weather_check_time = None
@@ -172,14 +172,14 @@ init -20 python in awc_globals:
     from pyowm import OWM
 
     #Call the api key setup
-    if store.awc_isInvalidAPIKey(store.persistent._awc_API_key):
-        store.awc_apiKeySetup()
+    #if store.awc_isInvalidAPIKey(store.persistent._awc_API_key):
+    #    store.awc_apiKeySetup()
 
     #Get our lookup file
     lookup_file = "Submods/Auto Weather Change/Utilities/awc_citylookup.txt"
 
     #Now create the open weather map object
-    owm = OWM("3ca736d09012df9ce6c09e636304e263")
+    owm = OWM(store.persistent._awc_API_key)
     owm.API_VERSION = '3.0'
 
     #Weather status keywords
